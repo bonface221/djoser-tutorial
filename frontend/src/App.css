@@ -1,0 +1,35 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+.app-loader {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 5px solid #fff;
+  border-right: 5px solid transparent;
+  box-sizing: border-box;
+  animation: app-lotation 1s linear infinite;
+}
+.app-loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border-left: 5px solid #000000;
+  border-bottom: 5px solid transparent;
+  animation: app-lotation 0.5s linear infinite reverse;
+}
+@keyframes app-lotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
