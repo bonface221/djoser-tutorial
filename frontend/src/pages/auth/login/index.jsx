@@ -61,16 +61,15 @@ const Login = () => {
       });
       setTokens(access, refresh);
       console.log(newUser);
-      setUser({
-        ...newUser,
-      });
+      setUser(newUser);
 
       navigate("/");
     },
     onError: (error) => {
-      if (error.detail) {
+      console.log(error);
+      if (error.response.data.detail) {
         toast({
-          title: error.detail,
+          title: error.response.data.detail,
           position: "top",
           status: "error",
           duration: 6000,
@@ -78,9 +77,9 @@ const Login = () => {
         });
         return;
       }
-      if (error.error) {
+      if (error.response.data.error) {
         toast({
-          title: error.error,
+          title: error.response.data.detail,
           position: "top",
           status: "error",
           duration: 6000,

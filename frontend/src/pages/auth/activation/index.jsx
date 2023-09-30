@@ -51,46 +51,46 @@ const ActivateEmail = () => {
     },
   });
 
-  // useEffect(() => {
-  //   if (!uid || !token) {
-  //     setPageLoading(false);
-  //     navigate("/auth/login");
-  //     toast({
-  //       title: "You don't have permission to access activation page",
-  //       position: "top",
-  //       status: "error",
-  //       duration: 5000,
-  //       isClosable: true,
-  //     });
+  useEffect(() => {
+    if (!uid || !token) {
+      setPageLoading(false);
+      navigate("/auth/login");
+      toast({
+        title: "You don't have permission to access activation page",
+        position: "top",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
 
-  //     return;
-  //   }
-  //   if (uid && token) {
-  //     setPageLoading(false);
-  //     mutation.mutate(credentials);
-  //   }
-  // }, []);
+      return;
+    }
+    if (uid && token) {
+      setPageLoading(false);
+      mutation.mutate(credentials);
+    }
+  }, []);
   const { isLoading, isError, isSuccess } = mutation;
-  // if (pageLoading || isLoading) {
-  //   return (
-  //     <Box
-  //       h="100vh"
-  //       display="flex"
-  //       alignItems="center"
-  //       justifyContent="center"
-  //       bgGradient="linear-gradient(
-  //         22deg,
-  //         rgba(158,134,37,1) 24%,
-  //         rgba(245,226,197,1) 73%
-  //       )"
-  //       bgSize="cover"
-  //       bgPosition="right top"
-  //       bgRepeat="no-repeat"
-  //     >
-  //       <Box className="app-loader"></Box>
-  //     </Box>
-  //   );
-  // }
+  if (pageLoading || isLoading) {
+    return (
+      <Box
+        h="100vh"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        bgGradient="linear-gradient(
+          22deg,
+          rgba(158,134,37,1) 24%,
+          rgba(245,226,197,1) 73%
+        )"
+        bgSize="cover"
+        bgPosition="right top"
+        bgRepeat="no-repeat"
+      >
+        <Box className="app-loader"></Box>
+      </Box>
+    );
+  }
 
   return (
     <Stack

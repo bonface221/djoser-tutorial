@@ -10,7 +10,7 @@ import { useUser } from "../../hooks/useUser";
 import PasswordResetEmail from "./reset";
 
 const Auth = () => {
-  const [isLoading, setIsLoading] = useState(false); // set to true
+  const [isLoading, setIsLoading] = useState(true); // set to true
   const navigate = useNavigate();
   const { user } = useUser();
   const routes = useRoutes([
@@ -44,40 +44,40 @@ const Auth = () => {
     },
   ]);
 
-  // useEffect(() => {
-  //   if (user.id) {
-  //     navigate("/");
-  //     return;
-  //   }
+  useEffect(() => {
+    if (user.id) {
+      navigate("/");
+      return;
+    }
 
-  //   if (getAccessToken()) {
-  //     window.location.href = "/";
-  //     return;
-  //   }
-  //   setIsLoading(false);
+    if (getAccessToken()) {
+      window.location.href = "/";
+      return;
+    }
+    setIsLoading(false);
 
-  //   return setIsLoading(false);
-  // }, []);
-  // if (isLoading) {
-  //   return (
-  //     <Box
-  //       h="100vh"
-  //       display="flex"
-  //       alignItems="center"
-  //       justifyContent="center"
-  //       bgGradient="linear-gradient(
-  //         22deg,
-  //         rgba(158, 134, 37, 1) 24%,
-  //         rgba(245, 226, 197, 1) 73%
-  //       )"
-  //       bgSize="cover"
-  //       bgPosition="right top"
-  //       bgRepeat="no-repeat"
-  //     >
-  //       <Box className="app-loader"></Box>
-  //     </Box>
-  //   );
-  // }
+    return setIsLoading(false);
+  }, []);
+  if (isLoading) {
+    return (
+      <Box
+        h="100vh"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        bgGradient="linear-gradient(
+          22deg,
+          rgba(158, 134, 37, 1) 24%,
+          rgba(245, 226, 197, 1) 73%
+        )"
+        bgSize="cover"
+        bgPosition="right top"
+        bgRepeat="no-repeat"
+      >
+        <Box className="app-loader"></Box>
+      </Box>
+    );
+  }
   return (
     <Box
       bgImage="url('/bg.jpg')"

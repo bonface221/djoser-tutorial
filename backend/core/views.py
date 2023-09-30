@@ -46,15 +46,3 @@ class CustomTokenObtainPairView(TokenObtainPairView):
             return Response({'error': 'Invalid username or password'}, status=status.HTTP_400_BAD_REQUEST)
 
         return super().post(request, *args, **kwargs)
-
-# @api_view(['GET'])
-# @permission_classes([AllowAny])
-# def CustomUserActivate(request, uid, token):
-#     """
-#     Intermediate view to activate a user's email.
-#     """
-#     post_url = f"{config('SITE_URL')}/auth/users/activation/"
-#     post_data = {"uid": uid, "token": token}
-#     result = requests.post(post_url, data=post_data)
-
-#     return Response('Thank you for activating your account you can now go back to the main site')
